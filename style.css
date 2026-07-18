@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap');
+
+:root {
+  --beige-light: #F8F5F0;
+  --beige: #EDE3D3;
+  --sage: #A8BBA2;
+  --rose: #E3CFC1;
+  --brown: #6B5B4F;
+  --white: #FFFFFF;
+  --text: #444;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Cairo', sans-serif;
+  background: var(--beige-light);
+  color: var(--brown);
+  line-height: 1.8;
+  direction: rtl;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+/* ===== الهيدر ===== */
+header {
+  background: var(--white);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+}
+
+.logo { font-size: 26px; font-weight: 700; color: var(--sage); }
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--brown);
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+nav a:hover, nav a.active { color: var(--sage); }
+
+.menu-btn { display: none; font-size: 28px; cursor: pointer; color: var(--sage); }
+
+/* ===== الهيرو ===== */
+.hero {
+  background: linear-gradient(rgba(248,245,240,0.8), rgba(248,245,240,0.8)), url('img/hero-bg.jpg') center/cover;
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.hero h1 { font-size: 42px; color: var(--sage); margin-bottom: 15px; }
+.hero p { font-size: 18px; margin-bottom: 25px; color: var(--text); }
+
+/* ===== البطاقات - المنتجات والخدمات ===== */
+.btn {
+  background: var(--sage);
+  color: var(--white);
+  padding: 14px 30px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+  font-family: 'Cairo', sans-serif;
+  transition: 0.3s;
+}
+.btn:hover { background: var(--rose); transform: translateY(-2px); }
+
+/* ده المهم: في الكمبيوتر 3 اعمدة تلقائي */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 اعمدة ثابتة للكمبيوتر */
+  gap: 25px;
+}
+
+.card {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+  transition: 0.3s;
+}
+.card:hover { transform: translateY(-5px); }
+.card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+.card h3 { color: var(--sage); margin-bottom: 10px; }
+
+/* ===== الفورم - تسجيل دخول وحجز ===== */
+form {
+  background: var(--white);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+  max-width: 500px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--beige);
+  border-radius: 10px;
+  margin: 5px 0 15px 0;
+  font-family: 'Cairo', sans-serif;
+  font-size: 15px;
+}
+input:focus { border-color: var(--sage); outline: none; }
+
+/* ===== من نحن ===== */
+.about-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+.about-section img { width: 100%; border-radius: 20px; }
+
+/* ===== الفوتر ===== */
+footer {
+  background: var(--beige);
+  text-align: center;
+  padding: 20px;
+  margin-top: 50px;
+}
+
+/* ===== التجاوب التلقائي ===== */
+
+/* تابلت: عمودين */
+@media (max-width: 992px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  .hero h1 { font-size: 36px; }
+}
+
+/* موبايل: عمود واحد بالغصب */
+@media (max-width: 768px) {
+  .menu-btn { display: block; }
+  nav ul {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 65px;
+    right: 0;
+    background: var(--white);
+    width: 100%;
+    padding: 20px 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+  nav ul.active { display: flex; }
+  
+  .hero { padding: 60px 20px; }
+  .hero h1 { font-size: 28px; }
+  
+  /* اهم سطرين */
+  .grid { grid-template-columns: 1fr; } /* عمود واحد */
+  .about-section { grid-template-columns: 1fr; }
+  
+  form { padding: 20px; }
+  .card img { height: 220px; }
+}
+
+/* موبايل صغير */
+@media (max-width: 480px) {
+  .logo { font-size: 22px; }
+  .btn { width: 100%; }
+  .card img { height: 200px; }
+}
